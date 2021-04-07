@@ -5,7 +5,7 @@ function Sightings(props){
     <div>
         <h2>Sightings</h2>
         {props.sightings.map(s => (
-            <ul>
+            <ul key={`${s._id}`}>
                 <li key={`${s._id}-username`}>User: {s.user.username}</li>
                 <li key={`${s._id}-date`}>Date: {s.date}</li>
                 <li key={`${s._id}-animal`}>Animal: {s.animal.type}</li>
