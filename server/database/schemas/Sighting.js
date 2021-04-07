@@ -1,16 +1,8 @@
 const mongoose = require('mongoose');
 
 const sightingSchema = new mongoose.Schema({
-    user: {
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: 'User',
-      required: true
-    },
-    animal: {
-      type: mongoose.Schema.Types.ObjectId, 
-      ref: 'Animal',
-      required: true
-    },
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    animal: { type: mongoose.Schema.Types.ObjectId, ref: 'Animal', required: true },
     location: {
         latitude: { type: Number }, 
         longitude: { type: Number } 

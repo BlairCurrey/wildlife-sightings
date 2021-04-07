@@ -16,12 +16,12 @@ router.use('/api/sightings', sightings);
 
 router.get('/api', async (req, res) => {
     try{
-        res.send({
-            name: "Blair",
-            age: 32,
-        });
+        res.status(200);
+        res.send({});
     } catch (error) {
         console.log(error)
+        res.status(500);
+        res.send({ error: error});
     }
 });
 
