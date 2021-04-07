@@ -28,13 +28,14 @@ sightingSchema.statics.displayFields = function() {
   return 'user animal location date comment createdAt updatedAt'
 };
 
-// Returns sighting query with animal and user joins and as regular
-// json object (not mongoose query result type)
+// Returns sightings with animal and user joins sorted by create
+// date (new to old) as regular json object.
 // Usage: const doc = await.Sighting.find().custom()
 sightingSchema.query.custom = function() {
   return this.populate('animal', 'type') // join animal
   .populate('user', 'username')          // join user
   .lean()
+  .sort({createdAt: -1})
   .exec();
 };
 
