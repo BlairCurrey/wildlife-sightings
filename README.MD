@@ -1,6 +1,6 @@
 # [Wildlife Sightings](https://mern-app-test.azurewebsites.net/)
 
-Wildlife sightings allows you to report sightings of different wildlife and view reports that others have submitted. Features user authentication using json web tokens (JWT). Uses the MERN stack as well as Azure and MongoDB Atlas cloud services. [Visit the application.](https://mern-app-test.azurewebsites.net/)
+Wildlife sightings allows you to report sightings of different wildlife and view reports that others have submitted. Features stateless user authentication using json web tokens (JWT). Uses the MERN stack as well as Azure and MongoDB Atlas cloud services. [Visit the application.](https://mern-app-test.azurewebsites.net/)
 
 ## API
 
