@@ -4,7 +4,7 @@ Wildlife sightings allows you to report sightings of different wildelife and vie
 
 ## API
 
-This application utilizes a restful API which is consumed by ar eact frontend. Alternatively, the api can be accessed directly.
+This application utilizes a restful API which is consumed by a react frontend. Alternatively, the api can be accessed directly.
 
 ### All sightings
     
