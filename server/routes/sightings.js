@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { Sighting, Animal } = require('../database/schemas');
+const checkAuth = require('../middleware/check-auth')
+
+const { Sighting } = require('../database/schemas');
 
 // All sightings
 router.get('/', async (req, res) => {
@@ -34,11 +36,10 @@ router.get('/:id', async (req, res) => {
 });
 
 // Add sighting
-router.post('/', async (req, res) => {
+router.post('/', checkAuth, async (req, res) => {
     try {
-        console.log(req.body);
         newSighting = new Sighting({
-            user: req.body.userId,
+            user: req.userData.id,
             animal: req.body.animalId,
             location: {
                 latitude: req.body.latitude, 
@@ -58,7 +59,7 @@ router.post('/', async (req, res) => {
 });
 
 // Update sighting
-router.put('/', async (req, res) => {
+router.put('/', checkAuth, async (req, res) => {
     try {
         query = {_id: req.body.id};
         updatedSighting = {
@@ -71,7 +72,7 @@ router.put('/', async (req, res) => {
             comment: req.body.comment
         };
         let result = await Sighting.updateOne(query, updatedSighting);
-        if(result.nModified == 0){throw "Document submitted matches current record."}
+        if(result.nModified == 0) throw "Document submitted matches current record.";
         res.status(200);
         res.send({ message: `Sighting updated.` });
     } catch (error) {

@@ -40,9 +40,10 @@ router.post('/:type', async (req, res) => {
         if (error.name === 'MongoError' && error.code === 11000) {
             res.status(422);
             res.send({message: 'Animal already exists.', error: error});
-          }
-        res.status(400);
-        res.send({ message: "Did not add animal", error: error });
+        } else {
+            res.status(400);
+            res.send({ message: "Did not add animal", error: error });
+        }
     }
 });
 
