@@ -1,0 +1,9 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/bb83bbc4-e9c0-463f-a6cb-3bd05b43adff/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/mern-app",
+    "appService.deploySubpath": ".",
+    "git.ignoreLimitWarning": true
+}

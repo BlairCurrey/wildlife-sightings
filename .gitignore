@@ -1,0 +1,9 @@
+client/build
+.env
+
+// dependencies
+node_modules
+
+// misc
+todo.txt
+mongo-atlas-credentials
