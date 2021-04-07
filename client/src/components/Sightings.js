@@ -1,34 +1,21 @@
 import React from "react";
 
-class Sightings extends React.Component {
-    state = { 
-        sightings: [] 
-    }
-
-    async componentDidMount() {
-        const url = "/api/sightings";
-        const response = await fetch(url);
-        const data = await response.json();
-        this.setState({sightings: data.sightings});
-    }
-
-    render() {
-        return (
-        <div>
-            <h2>Sightings</h2>
-            {this.state.sightings.map(s => (
-                <ul>
-                    <li>User: {s.user.username}</li>
-                    <li>Date: {s.date}</li>
-                    <li>Animal: {s.animal.type}</li>
-                    <li>Coordinates: {s.location.latitude}, {s.location.longitude}</li>
-                    <li>Comment: {s.comment}</li>
-                    <li>Submitted: {s.createdAt}</li>
-                </ul>
-            ))}
-        </div>
-        )
-    }
+function Sightings(props){
+    return (
+    <div>
+        <h2>Sightings</h2>
+        {props.sightings.map(s => (
+            <ul>
+                <li key={`${s._id}-username`}>User: {s.user.username}</li>
+                <li key={`${s._id}-date`}>Date: {s.date}</li>
+                <li key={`${s._id}-animal`}>Animal: {s.animal.type}</li>
+                <li key={`${s._id}-coordinates`}>Coordinates: {s.location.latitude}, {s.location.longitude}</li>
+                <li key={`${s._id}-comment`}>Comment: {s.comment}</li>
+                <li key={`${s._id}-submitted`}>Submitted: {s.createdAt}</li>
+            </ul>
+        ))}
+    </div>
+    )
 }
 
 export default Sightings;

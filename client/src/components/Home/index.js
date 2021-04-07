@@ -1,22 +1,30 @@
 import React from 'react';
-import FetchTest from '../FetchTest.js';
-import UserForm from '../UserForm.js';
-import SightingForm from '../SightingForm.js';
+// import FetchTest from '../FetchTest.js';
+// import UserForm from '../UserForm.js';
+// import SightingForm from '../SightingForm.js';
+import SightingFormWrapper from '../SightingFormWrapper.js'
 import Sightings from '../Sightings.js';
 
 class Home extends React.Component{
     constructor(props) {
       super(props)
       this.state = {
-          animals: []
+          animals: [],
+          sightings: [],
       };
-    }
+    };
 
     async componentDidMount() {
-      const url = "/api/animals";
-      const response = await fetch(url);
+      this.fetchAndSave('animals');
+      this.fetchAndSave('sightings');
+    }
+
+    // expects endpoint name == state object key == response object key
+    // ie, api/animal, this.state.animal, data.animal
+    async fetchAndSave(endpoint){
+      const response = await fetch(`/api/${endpoint}`);
       const data = await response.json();
-      this.setState({animals: data.animals});
+      this.setState({[endpoint]: data[endpoint]});
     }
 
     render(){
@@ -25,8 +33,10 @@ class Home extends React.Component{
           <h1>Homepage</h1>
           {/* <FetchTest />
           <UserForm /> */}
-          <SightingForm animals={this.state.animals} />
-          <Sightings />
+          <SightingFormWrapper 
+            animals={this.state.animals}
+            fetchAndSave={(endpoint => this.fetchAndSave(endpoint))}/>
+          <Sightings sightings={this.state.sightings}/>
         </div>
       );
     }
