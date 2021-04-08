@@ -1,3 +1,5 @@
+// Not yet implemented - always passes
+
 async function checkOwner(req, res, next) {
     try{
         next();

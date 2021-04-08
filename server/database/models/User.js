@@ -1,9 +1,5 @@
 const mongoose = require('mongoose');
-
-const roles = {
-  ADMIN: 'ADMIN',
-  USER: 'USER'
-}
+const roles = require('../roles')
 
 const userSchema = new mongoose.Schema({
     username: { 

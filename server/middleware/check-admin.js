@@ -1,4 +1,5 @@
 const { User } = require('../database/models');
+const roles = require('../database/roles')
 
 async function checkAdmin(req, res, next) {
     try{
@@ -6,7 +7,7 @@ async function checkAdmin(req, res, next) {
             req.userData.id, 
             {'_id': 0, 'role': 1}
         );
-        if(user.role != "ADMIN") throw "Failed admin check"
+        if(user.role != roles.ADMIN) throw "Failed admin check"
         next();
     } catch (error) {
         console.log(error);
