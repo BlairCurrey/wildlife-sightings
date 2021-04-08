@@ -29,6 +29,16 @@ exports.getById = async (req, res) => {
 
 exports.signup = async (req, res) => {
     try {
+        // throw errors if email/username already exist
+        let errors = {}
+        if(await User.findOne({username: req.body.username})){
+            errors.username = "Username already exists";
+        }
+        if(await User.findOne({email: req.body.email})){
+            errors.email = "Email already exists";
+        }
+        if(Object.keys(errors).length !== 0) throw errors
+
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
         const newUser = new User({
             username: req.body.username,
