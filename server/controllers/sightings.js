@@ -2,11 +2,11 @@ const { Sighting } = require('../database/schemas');
 
 exports.getAll = async (req, res) => {
     try {
-        const sightingDoc = await Sighting
+        const doc = await Sighting
             .find({}, Sighting.displayFields())
             .custom();
         res.status(200);
-        res.send({ count: sightingDoc.length, sightings: sightingDoc });
+        res.send({ count: doc.length, sightings: doc });
     } catch (error) {
         console.log(error);
         res.status(404);

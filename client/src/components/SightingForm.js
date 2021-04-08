@@ -7,16 +7,6 @@ function SightingForm(props){
         <form onSubmit={props.onSubmit}>
         <h2>Add a Sighting</h2>
         <label>
-            userId *
-            <input
-                type='text'
-                value={props.values.userId}
-                name="userId"
-                onChange={props.onChange}
-            />
-        </label>
-
-        <label>
             Animal *
             <select
                 name="animalId"
