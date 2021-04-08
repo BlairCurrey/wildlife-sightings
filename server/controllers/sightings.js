@@ -6,11 +6,11 @@ exports.getAll = async (req, res) => {
             .find({}, Sighting.displayFields())
             .custom();
         res.status(200);
-        res.send({ count: doc.length, sightings: doc });
+        return res.send({ count: doc.length, sightings: doc });
     } catch (error) {
         console.log(error);
         res.status(404);
-        res.send({ message: "No documents found", error: error });
+        return res.send({ message: "No documents found", error: error });
     }
 };
 
@@ -21,11 +21,11 @@ exports.getById = async (req, res) => {
             .custom();
         if(doc == null){ throw "No document found"}
         res.status(200);
-        res.send({ sighting: doc });
+        return res.send({ sighting: doc });
     } catch (error) {
         console.log(error);
         res.status(404);
-        res.send({ message: "No document found", error: error });
+        return res.send({ message: "No document found", error: error });
     }
 };
 
@@ -43,11 +43,11 @@ exports.create = async (req, res) => {
         });
         let _ = await newSighting.save();
         res.status(201);
-        res.send({ message: "Added sighting" });
+        return res.send({ message: "Added sighting" });
     } catch (error) {
         console.log(error);
         res.status(500);
-        res.send({ message: "Did not add sighting", error: error });
+        return res.send({ message: "Did not add sighting", error: error });
     }
 };
 
@@ -66,11 +66,11 @@ exports.update = async (req, res) => {
         let result = await Sighting.updateOne(query, updatedSighting);
         if(result.nModified == 0) throw "Document submitted matches current record.";
         res.status(200);
-        res.send({ message: `Sighting updated.` });
+        return res.send({ message: `Sighting updated.` });
     } catch (error) {
         console.log(error);
         res.status(500);
-        res.send({ message: "Did not update sighting", error: error });
+        return res.send({ message: "Did not update sighting", error: error });
     }
 };
 
@@ -79,10 +79,10 @@ exports.delete = async (req, res) => {
         let result = await Sighting.deleteOne({_id: req.params.id});
         if(result.deletedCount == 0){ throw "Nothing to delete"};
         res.status(200);
-        res.send({ message: `Deleted document` });
+        return res.send({ message: `Deleted document` });
     } catch (error) {
         console.log(error);
         res.status(500);
-        res.send({ message: "Did not delete animal", error: error });
+        return res.send({ message: "Did not delete animal", error: error });
     }
 };

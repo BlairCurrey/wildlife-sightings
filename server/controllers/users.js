@@ -7,11 +7,11 @@ exports.getAll = async (req, res) => {
     try {
         const doc = await User.find();
         res.status(200);
-        res.send({ users: doc });
+        return res.send({ users: doc });
     } catch (error) {
         console.log(error);
         res.status(404);
-        res.send({ message: "No documents found", error: error });
+        return res.send({ message: "No documents found", error: error });
     }
 };
 
@@ -23,7 +23,7 @@ exports.getById = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(404);
-        res.send({ message: "No document found", error: error });
+        return res.send({ message: "No document found", error: error });
     }
 };
 
@@ -37,15 +37,15 @@ exports.signup = async (req, res) => {
         });
         let _ = await newUser.save()
         res.status(201);
-        res.send({ message: "User created" });
+        return res.send({ message: "User created" });
     } catch (error) {
         console.log(error);
         if (error.name === 'MongoError' && error.code === 11000){
             res.status(422);
-            res.send({ message: "Duplicate", error: error})
+            return res.send({ message: "Duplicate", error: error})
         } else {
             res.status(500);
-            res.send({ error: error });   
+            return res.send({ error: error });   
         }
     }
 };
@@ -67,15 +67,15 @@ exports.login = async (req, res) => {
             {expiresIn: "6h"}
         );
         res.status(200);
-        res.send({message: 'Auth successful', token: token});
+        return res.send({message: 'Auth successful', token: token});
     } catch (error) {
         console.log(error);
         if(error == "Authorization failed"){
             res.status(401);
-            res.send({error: error});
+            return res.send({error: error});
         } else {
             res.status(500);
-            res.send({error: error});
+            return res.send({error: error});
         }
     }
 };
@@ -85,9 +85,9 @@ exports.delete = async (req, res) => {
         let result = await User.deleteOne({_id: req.params.id});
         if(result.deletedCount == 0){ throw "Nothing to delete"};
         res.status(200);
-        res.send({ message: `Deleted user`});
+        return res.send({ message: `Deleted user`});
     } catch (error) {
         console.log(error);
-        res.send({ message: "Did not delete user", error: error });
+        return res.send({ message: "Did not delete user", error: error });
     }
 };

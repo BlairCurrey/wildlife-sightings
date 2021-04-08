@@ -4,11 +4,11 @@ exports.getAll = async (req, res) => {
     try {
         const doc = await Animal.find();
         res.status(200);
-        res.send({ animals: doc });
+        return res.send({ animals: doc });
     } catch (error) {
         console.log(error);
         res.status(404);
-        res.send({ message: "No documents found", error: error });
+        return res.send({ message: "No documents found", error: error });
     }
 };
 
@@ -16,11 +16,11 @@ exports.getById = async (req, res) => {
     try {
         const doc = await Animal.findById(req.params.id);
         res.status(200);
-        res.send({ animals: doc });
+        return res.send({ animals: doc });
     } catch (error) {
         console.log(error);
         res.status(404);
-        res.send({ message: "No document found", error: error });
+        return res.send({ message: "No document found", error: error });
     }
 };
 
@@ -29,15 +29,15 @@ exports.create = async (req, res) => {
         newAnimal = new Animal({type: req.body.type});
         let _ = await newAnimal.save();
         res.status(201);
-        res.send({ message: `Added ${req.body.type}` });
+        return res.send({ message: `Added ${req.body.type}` });
     } catch (error) {
         console.log(error);
         if (error.name === 'MongoError' && error.code === 11000) {
             res.status(422);
-            res.send({message: 'Animal already exists.', error: error});
+            return res.send({message: 'Animal already exists.', error: error});
         } else {
             res.status(400);
-            res.send({ message: "Did not add animal", error: error });
+            return res.send({ message: "Did not add animal", error: error });
         }
     }
 };
