@@ -1,4 +1,4 @@
-const { Sighting } = require('../database/schemas');
+const { Sighting } = require('../database/models');
 
 exports.getAll = async (req, res) => {
     try {

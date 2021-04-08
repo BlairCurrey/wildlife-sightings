@@ -1,4 +1,4 @@
-const { Animal } = require('../database/schemas');
+const { Animal } = require('../database/models');
 
 exports.getAll = async (req, res) => {
     try {

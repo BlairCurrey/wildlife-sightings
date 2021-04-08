@@ -9,7 +9,7 @@ function checkAuth(req, res, next) {
     } catch (error) {
         console.log(error);
             res.status(401);
-            res.send({message: "Authorization failed"});
+            return res.send({message: "Authorization failed"});
     }
 }
 

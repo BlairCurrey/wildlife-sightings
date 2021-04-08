@@ -1,7 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const { User } = require('../database/schemas');
+const { User } = require('../database/models');
 
 exports.getAll = async (req, res) => {
     try {
@@ -76,6 +76,29 @@ exports.login = async (req, res) => {
         } else {
             res.status(500);
             return res.send({error: error});
+        }
+    }
+};
+
+exports.update = async (req, res) => {
+    try {
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        const newUser = new User({
+            username: req.body.username,
+            email: req.body.email,
+            password: hashedPassword
+        });
+        let _ = await newUser.save()
+        res.status(201);
+        return res.send({ message: "User created" });
+    } catch (error) {
+        console.log(error);
+        if (error.name === 'MongoError' && error.code === 11000){
+            res.status(422);
+            return res.send({ message: "Duplicate", error: error})
+        } else {
+            res.status(500);
+            return res.send({ error: error });   
         }
     }
 };
