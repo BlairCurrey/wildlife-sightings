@@ -76,7 +76,7 @@ exports.update = async (req, res) => {
 
 exports.delete = async (req, res) => {
     try {
-        let result = await Sighting.deleteOne({_id: req.params.id});
+        let result = await Sighting.deleteOne({_id: req.body.id});
         if(result.deletedCount == 0){ throw "Nothing to delete"};
         res.status(200);
         return res.send({ message: `Deleted document` });
