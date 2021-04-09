@@ -1,10 +1,11 @@
-import { React, useState } from 'react';
+import { React, useState } from "react";
 
-import SignupForm from './SignupForm';
+import SightingForm from './SightingForm.js';
 import { getFormValidationState, formStateIsValid } from '../common/validators';
-
-function SignupFormWrapper({
-    validate, 
+function SightingFormWrapper({
+    animals,
+    fetchSightings,
+    validate,
     initialValues, 
     requestParams, 
     setResponse
@@ -22,6 +23,7 @@ function SignupFormWrapper({
         setValues({ ...values, [name]: value, });
         setTouched({ ...touched, [name]: true,});
     };
+
 
     const handleBlur = event => {
         const { name, value} = event.target;
@@ -62,20 +64,23 @@ function SignupFormWrapper({
                 setValues(initialValues);
                 setErrors({});
                 setTouched({});
+                fetchSightings();
             }
         }
     };
 
-    return (
-        <SignupForm
-            values={values}
-            errors={errors}
-            touched={touched}
-            handleChange={handleChange}
-            handleBlur={handleBlur}
-            handleSubmit={handleSubmit}
-        />
-    )
-}
-
-export default SignupFormWrapper;
+    return(
+        <div>
+            <SightingForm
+                animals={animals}
+                values={values}
+                errors={errors}
+                touched={touched}
+                handleChange={handleChange}
+                handleBlur={handleBlur}
+                handleSubmit={handleSubmit}
+            />
+        </div>
+    );
+};
+export default SightingFormWrapper;
