@@ -19,8 +19,8 @@ class SightingFormWrapper extends React.Component{
         const options = {
             method: 'POST',
             headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(this.state)
         };

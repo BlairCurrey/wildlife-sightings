@@ -74,8 +74,9 @@ exports.login = async (req, res) => {
         const token = jwt.sign(
             { email: user.email, id: user._id },
             process.env.JWT_KEY,
-            {expiresIn: "6h"}
+            {expiresIn: "1h"}
         );
+        res.cookie('token', token, {httpOnly: true})
         res.status(200);
         return res.send({message: 'Auth successful', token: token});
     } catch (error) {
