@@ -1,36 +1,94 @@
 const usernameValidator = username => {
-    if (username.trim() === '') {
-       return 'Username is required';
-    }
-    // if (/[^a-zA-Z -]/.test(fieldValue)) {
-    //     return 'Invalid characters';
-    //}
-        return null;
+  if (username.trim() === '') {
+      return 'Username is required';
+  }
+  // if (/[^a-zA-Z -]/.test(fieldValue)) {
+  //     return 'Invalid characters';
+  //}
+      return null;
 };
   
 const emailValidator = email => {
-    if (
-      /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
-        email,
-      )
-    ) {
-      return null;
-    }
-    if (email.trim() === '') {
-      return 'Email is required';
-    }
-    return 'Please enter a valid email';
-  };
+  if (
+    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
+      email,
+    )
+  ) {
+    return null;
+  }
+  if (email.trim() === '') {
+    return 'Email is required';
+  }
+  return 'Please enter a valid email';
+};
   
 const passwordValidator = password => {
-    if (!password) {
-      return 'Password is required';
-    }
-    if (password.length < 6) {
-      return 'Password must be at least 6 characters';
-    }
-    return null;
-  };
+  if (!password) {
+    return 'Password is required';
+  }
+  if (password.length < 6) {
+    return 'Password must be at least 6 characters';
+  }
+  return null;
+};
+
+const animalIdValidator = animalId => {
+  if (!animalId) {
+    return 'Animal is required';
+  }
+
+  return null;
+};
+
+const latitudeValidator = latitude => {
+  if (!latitude) {
+    return 'Latitude is required';
+  }
+
+  const min = -90;
+  const max = 90;
+  if (min > latitude || latitude > max ) {
+    return `Invalid latitude - must be between ${min} and ${max}`;
+  }
+
+  return null;
+};
+
+const longitudeValidator = longitude => {
+  if (!longitude) {
+    return 'Latitude is required';
+  }
+
+  const min = -180;
+  const max = 180;
+  if (min > longitude || longitude > max ) {
+    return `Invalid latitude - must be between ${min} and ${max}`;
+  }
+
+  return null;
+};
+
+
+const dateValidator = date => {
+  if (!date) {
+    return 'Animal is required';
+  }
+
+  let todaysDate = new Date().toISOString().split("T")[0];
+  if (date > todaysDate) {
+    return 'Date can\'t be in the future'
+  }
+
+  return null;
+};
+
+const commentValidator = comment => {
+  if (comment.length > 500) {
+    return 'Cannot exceed 500 characters';
+  }
+
+  return null;
+};
 
 // Returns an object with errors and touched
 // takes form values and validation object which has keys corresponding
@@ -77,9 +135,14 @@ function formStateIsValid(formValidationState, values){
 }
 
 export {
+  getFormValidationState,
+  formStateIsValid,
   usernameValidator, 
   emailValidator, 
   passwordValidator ,
-  getFormValidationState,
-  formStateIsValid
+  animalIdValidator,
+  latitudeValidator,
+  longitudeValidator,
+  dateValidator,
+  commentValidator
 }

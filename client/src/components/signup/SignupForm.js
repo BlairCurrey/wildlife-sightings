@@ -1,9 +1,7 @@
-import React from 'react';
-
 function SignupForm({
-    values, 
-    errors, 
-    touched, 
+    values,
+    errors,
+    touched,
     handleChange,
     handleBlur,
     handleSubmit

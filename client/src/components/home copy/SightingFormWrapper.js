@@ -25,7 +25,7 @@ class SightingFormWrapper extends React.Component{
             body: JSON.stringify(this.state)
         };
         // post request
-        let _ = await fetch(url , options);
+        await fetch(url , options);
         // update sightings
         this.props.fetchAndSave("sightings");
         } catch (error) {
