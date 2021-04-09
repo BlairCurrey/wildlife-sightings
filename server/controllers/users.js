@@ -50,13 +50,9 @@ exports.signup = async (req, res) => {
         return res.send({ message: "User created" });
     } catch (error) {
         console.log(error);
-        if (error.name === 'MongoError' && error.code === 11000){
-            res.status(422);
-            return res.send({ message: "Duplicate", error: error})
-        } else {
-            res.status(500);
-            return res.send({ error: error });   
-        }
+        res.status(500);
+        return res.send({ success: true,
+            message: "Singup request failed" });
     }
 };
 
