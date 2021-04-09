@@ -1,25 +1,40 @@
 import React from 'react';
 
-function LoginForm(props){
+function LoginForm({
+    values, 
+    errors, 
+    touched, 
+    handleChange,
+    handleBlur,
+    handleSubmit
+}){
     return(
-        <form onSubmit={props.onSubmit}>
+        <form onSubmit={handleSubmit}>
         <label>
             Email
             <input
-                type='email'
-                value={props.values.email}
+                type="email"
                 name="email"
-                onChange={props.onChange}
+                placeholder="email"
+                value={values.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
             />
+            <div className="invalidInput">{touched.email && errors.email}</div>
         </label>
         <label>
             Password
             <input
-                type='password'
-                value={props.values.password}
+                type="password"
                 name="password"
-                onChange={props.onChange}
+                placeholder="password"
+                value={values.password}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                required
             />
+            <div className="invalidInput">{touched.password && errors.password}</div>
         </label>
         <input type="submit" value="Submit" />
         </form>

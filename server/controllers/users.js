@@ -79,10 +79,10 @@ exports.login = async (req, res) => {
         console.log(error);
         if(error == "Authorization failed"){
             res.status(401);
-            return res.send({error: error});
+            return res.send({message: error});
         } else {
             res.status(500);
-            return res.send({error: error});
+            return res.send({message: error});
         }
     }
 };

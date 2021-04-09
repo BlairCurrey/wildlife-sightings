@@ -13,7 +13,7 @@ function SignupForm({
         <label>
             Username
             <input
-                type='text'
+                type="text"
                 name="username"
                 placeholder="username"
                 value={values.username}
@@ -26,7 +26,7 @@ function SignupForm({
         <label>
             Email
             <input
-                type='email'
+                type="email"
                 name="email"
                 placeholder="email@domain.com"
                 value={values.email}
@@ -39,7 +39,7 @@ function SignupForm({
         <label>
             Password
             <input
-                type='password'
+                type="password"
                 name="password"
                 placeholder="password"
                 value={values.password}

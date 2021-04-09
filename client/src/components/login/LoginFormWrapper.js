@@ -1,8 +1,8 @@
 import { React, useState } from 'react';
-import SignupForm from './SignupForm';
+import LoginForm from './LoginForm';
 import { getFormValidationState, formStateIsValid } from '../common/validators';
 
-function FormWrapper({validate, initialValues, requestParams, setResponse}){
+function LoginFormWrapper({validate, initialValues, requestParams, setResponse}){
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
@@ -34,7 +34,6 @@ function FormWrapper({validate, initialValues, requestParams, setResponse}){
         try{
             const { url, options} = requestParams(values);
             let response = await fetch(url , options);
-            // let data = await response.json()
             return response
         } catch (error) {
             console.log(error);
@@ -51,7 +50,6 @@ function FormWrapper({validate, initialValues, requestParams, setResponse}){
         
         if(formStateIsValid(formValidationState, values)){
             let response = await request(values);
-            console.log(response);
             setResponse(response);
             //if success status code clear form
             if(200 <= response.status && response.status < 300){
@@ -63,7 +61,7 @@ function FormWrapper({validate, initialValues, requestParams, setResponse}){
     };
 
     return (
-        <SignupForm
+        <LoginForm
             values={values}
             errors={errors}
             touched={touched}
@@ -74,4 +72,4 @@ function FormWrapper({validate, initialValues, requestParams, setResponse}){
     )
 }
 
-export default FormWrapper;
+export default LoginFormWrapper;

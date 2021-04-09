@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import FormWrapper from './FormWrapper';
+import SignupFormWrapper from './SignupFormWrapper';
 import { 
     usernameValidator, 
     emailValidator, 
@@ -42,7 +42,7 @@ function Signup(){
         <div>
             <h1>Signup</h1>
             <div>{result}</div>
-            <FormWrapper 
+            <SignupFormWrapper 
                 validate={validate}
                 initialValues={initialValues}
                 requestParams={requestParams}

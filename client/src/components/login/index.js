@@ -1,56 +1,53 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import LoginForm from './LoginForm';
+// import LoginForm from './LoginForm';
+import LoginFormWrapper from './LoginFormWrapper';
+import {  emailValidator, passwordValidator } from '../common/validators';
 
-class Login extends React.Component{
-    constructor(props) {
-        super(props)
-        this.state = {
-            email: "",
-            password: ""
-        };
+function Login (){
+    const [result, setResult] = useState();
+    const  validate = {
+        email: emailValidator,
+        password: passwordValidator,
+    }
+    const initialValues = {
+        email: "",
+        password: ""
+    }
+
+    const requestParams = data => {
+        return ({
+            url: '/api/users/login',
+            options: {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }
+        })
+    }
+
+    const setResponse = async requestResult => {
+        let data = await requestResult.json();
+        setResult(data.message)
     };
 
-    handleChange(event){
-        this.setState({[event.target.name]: event.target.value});
-    }
-
-    async handleSubmit(event){
-        event.preventDefault();
-        try{
-        // post parameters
-        const url = '/api/users/login';
-        const options = {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(this.state)
-        };
-        // post request
-        let response = await fetch(url , options);
-        let data = await response.json();
-        console.log(data);
-        } catch (error) {
-            console.log(error);
-        }
-    }
-
-    render(){
-        return(
-            <div>
-                <h1>Login</h1>
-                <LoginForm
-                    values={this.state}
-                    onChange={(event) => this.handleChange(event)}
-                    onSubmit={(event) => this.handleSubmit(event)}
-                />
-                <p>Not signed up yet?<Link to="/signup">Sign up</Link></p>
-            </div>
-        )
-    }
+    return(
+        <div>
+            <h1>Login</h1>
+            <div>{result}</div>
+            <LoginFormWrapper
+                validate={validate}
+                initialValues={initialValues}
+                requestParams={requestParams}
+                setResponse={setResponse}
+            />
+            <p>Not signed up yet?<Link to="/signup">Sign up</Link></p>
+        </div>
+    )
 }
 
 export default Login;
