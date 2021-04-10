@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 
 import SightingFormWrapper from './SightingFormWrapper.js'
 import Sightings from './Sightings.js';
+import Map from './Map.js';
 import { 
   animalIdValidator,
   latitudeValidator,
@@ -64,7 +65,6 @@ function Home(){
     let data = await requestResult.json();
     setResult(data.message)
   };
-
   return (
     <div className="Home">
       <h1>Homepage</h1>
@@ -78,6 +78,7 @@ function Home(){
         requestParams={requestParams}
         setResponse={setResponse}
       />
+      <Map sightings={sightings}/>
       <Sightings sightings={sightings}/>
     </div>
   );
