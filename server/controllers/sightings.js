@@ -1,4 +1,6 @@
 const { Sighting } = require('../database/models');
+const { Animal } = require('../database/models');
+const validator = require('validator');
 
 exports.getAll = async (req, res) => {
     try {
@@ -29,8 +31,49 @@ exports.getById = async (req, res) => {
     }
 };
 
+const creatSanitizer = (req) => {
+    Object.keys(req.body).forEach(key =>{
+        req.body[key] = validator.escape(req.body[key]);
+    })
+    return req
+}
+
+const createValidator = async (req) => {
+    const { animalId, latitude, longitude, date, comment } = req.body;
+    let errors = []
+    // animalId
+    if(animalId.length == 0) errors.push("No animal given.")
+    if(!(await Animal.findOne({_id: animalId}))){
+        errors.push("Given animal id does not exist");
+    }
+    // latitude
+    if(latitude.length == 0) errors.push("No latitude given.")
+    if(!(validator.isInt(latitude, {min: -90, max: 90}))){
+        errors.push("Invalid latitude");
+    }
+    //longitude
+    if(longitude.length == 0) errors.push("No longitude given.")
+    if(!(validator.isInt(longitude, {min: -180, max: 180}))){
+        errors.push("Invalid longitude");
+    }
+    //date
+    if(date.length == 0) errors.push("No date given.");
+    if(!(validator.isDate(date))){
+        errors.push("Invalid date");
+    }
+    //comment
+    if(comment.length > 500) errors.push("Comment exceeds length limits");
+    return errors
+}
+
 exports.create = async (req, res) => {
     try {
+        // sanatize and validate
+        req = createSanitizer(req);
+        const validationErrors = await createValidator(req);
+        if(validationErrors.length > 0) throw validationErrors;
+
+        //add sighting
         newSighting = new Sighting({
             user: req.userData.id,
             animal: req.body.animalId,
@@ -42,6 +85,8 @@ exports.create = async (req, res) => {
             comment: req.body.comment
         });
         let _ = await newSighting.save();
+
+        //response
         res.status(201);
         return res.send({ message: "Added sighting" });
     } catch (error) {

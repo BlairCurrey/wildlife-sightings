@@ -5,7 +5,7 @@ function checkAuth(req, res, next) {
         const token = req.cookies.token;
         const decoded = jwt.verify(token, process.env.JWT_KEY);
         req.userData = decoded;
-        next();
+        return next();
     } catch (error) {
         console.log(error);
             res.status(401);
