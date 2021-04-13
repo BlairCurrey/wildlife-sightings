@@ -1,5 +1,7 @@
 import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Paper, Typography, Grid } from '@material-ui/core'; 
+import { makeStyles } from '@material-ui/core/styles';
 
 import SignupFormWrapper from './SignupFormWrapper';
 import { 
@@ -7,6 +9,12 @@ import {
     emailValidator, 
     passwordValidator
 } from '../../utils/validators';
+
+const useStyles = makeStyles((theme) => ({
+    paper: { padding: "2rem" },
+    grid: { maxWidth: "350px" },
+    title: { marginBottom: theme.spacing(5) },
+}));
 
 function Signup(){
     const [result, setResult] = useState();
@@ -38,18 +46,41 @@ function Signup(){
         setResult(data.message)
     };
 
+    const classes = useStyles();
+
     return(
-        <div>
-            <h1>Signup</h1>
-            <div>{result}</div>
-            <SignupFormWrapper 
-                validate={validate}
-                initialValues={initialValues}
-                requestParams={requestParams}
-                setResponse={setResponse}
-            />
-            <p>Already signed up?<Link to="/login">Login</Link></p>
-        </div>
+        <Grid
+            container
+            direction="column"
+            alignItems="center"
+        >
+            <Grid item className={classes.grid}>
+                <Paper className={classes.paper}>
+                    <Typography 
+                        className={classes.title}
+                        variant="h2" 
+                        component="h1"
+                        align="center"
+                    >
+                        Signup
+                    </Typography>
+                    <SignupFormWrapper 
+                        validate={validate}
+                        initialValues={initialValues}
+                        requestParams={requestParams}
+                        setResponse={setResponse}
+                    />
+                    <Typography 
+                        variant="p" 
+                        align="center"
+                    >
+                        <Link to="/login">
+                            Already signed up? Login
+                        </Link>
+                    </Typography>
+                </Paper>
+            </Grid>   
+        </Grid> 
     )
 }
 
