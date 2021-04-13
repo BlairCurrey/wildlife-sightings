@@ -64,6 +64,7 @@ function Signup(){
                     >
                         Signup
                     </Typography>
+                    <div>{result}</div>
                     <SignupFormWrapper 
                         validate={validate}
                         initialValues={initialValues}
@@ -80,7 +81,7 @@ function Signup(){
                     </Typography>
                 </Paper>
             </Grid>   
-        </Grid> 
+        </Grid>
     )
 }
 

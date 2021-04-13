@@ -1,11 +1,18 @@
 import { React, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { Paper, Typography, Grid } from '@material-ui/core'; 
+import { makeStyles } from '@material-ui/core/styles';
 
-// import LoginForm from './LoginForm';
 import LoginFormWrapper from './LoginFormWrapper';
 import {  emailValidator, 
     passwordValidator 
 } from '../../utils/validators';
+
+const useStyles = makeStyles((theme) => ({
+    paper: { padding: "2rem" },
+    grid: { maxWidth: "350px" },
+    title: { marginBottom: theme.spacing(5) },
+}));
 
 function Login (){
     const [result, setResult] = useState();
@@ -37,18 +44,53 @@ function Login (){
         setResult(data.message)
     };
 
+    const classes = useStyles();
+
     return(
-        <div>
-            <h1>Login</h1>
-            <div>{result}</div>
-            <LoginFormWrapper
-                validate={validate}
-                initialValues={initialValues}
-                requestParams={requestParams}
-                setResponse={setResponse}
-            />
-            <p>Not signed up yet?<Link to="/signup">Sign up</Link></p>
-        </div>
+        // <div>
+        //     <h1>Login</h1>
+        //     <div>{result}</div>
+        //     <LoginFormWrapper
+        //         validate={validate}
+        //         initialValues={initialValues}
+        //         requestParams={requestParams}
+        //         setResponse={setResponse}
+        //     />
+        //     <p>Not signed up yet?<Link to="/signup">Sign up</Link></p>
+        // </div>
+        <Grid
+            container
+            direction="column"
+            alignItems="center"
+        >
+            <Grid item className={classes.grid}>
+                <Paper className={classes.paper}>
+                    <Typography 
+                        className={classes.title}
+                        variant="h2" 
+                        component="h1"
+                        align="center"
+                    >
+                        Login
+                    </Typography>
+                    <div>{result}</div>
+                    <LoginFormWrapper 
+                        validate={validate}
+                        initialValues={initialValues}
+                        requestParams={requestParams}
+                        setResponse={setResponse}
+                    />
+                    <Typography 
+                        variant="p" 
+                        align="center"
+                    >
+                        <Link to="/signup">
+                            Not signed up yet? Sign up
+                        </Link>
+                    </Typography>
+                </Paper>
+            </Grid>   
+        </Grid>
     )
 }
 
