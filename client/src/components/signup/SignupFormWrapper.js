@@ -1,7 +1,10 @@
 import { React, useState } from 'react';
 
 import SignupForm from './SignupForm';
-import { getFormValidationState, formStateIsValid } from '../common/validators';
+import { 
+    getFormValidationState, 
+    formStateIsValid 
+} from '../../utils/validators';
 
 function SignupFormWrapper({
     validate, 

@@ -9,7 +9,7 @@ import {
   longitudeValidator,
   dateValidator,
   commentValidator
-} from '../common/validators';
+} from '../../utils/validators';
 
 function Home(){
   const [result, setResult] = useState();

@@ -45,6 +45,10 @@ const latitudeValidator = latitude => {
     return 'Latitude is required';
   }
 
+  if (isNaN(latitude)) {
+    return 'Latitude must be a number';
+  }
+
   const min = -90;
   const max = 90;
   if (min > latitude || latitude > max ) {
@@ -57,6 +61,10 @@ const latitudeValidator = latitude => {
 const longitudeValidator = longitude => {
   if (!longitude) {
     return 'Latitude is required';
+  }
+
+  if (isNaN(longitude)) {
+    return 'Longitude must be a number';
   }
 
   const min = -180;

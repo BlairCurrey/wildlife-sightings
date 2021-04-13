@@ -6,7 +6,7 @@ import {
     usernameValidator, 
     emailValidator, 
     passwordValidator
-} from '../common/validators';
+} from '../../utils/validators';
 
 function Signup(){
     const [result, setResult] = useState();

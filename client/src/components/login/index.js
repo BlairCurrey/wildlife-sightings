@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 // import LoginForm from './LoginForm';
 import LoginFormWrapper from './LoginFormWrapper';
-import {  emailValidator, passwordValidator } from '../common/validators';
+import {  emailValidator, 
+    passwordValidator 
+} from '../../utils/validators';
 
 function Login (){
     const [result, setResult] = useState();

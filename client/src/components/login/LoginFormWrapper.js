@@ -1,6 +1,9 @@
 import { React, useState } from 'react';
 import LoginForm from './LoginForm';
-import { getFormValidationState, formStateIsValid } from '../common/validators';
+import { 
+    getFormValidationState, 
+    formStateIsValid } 
+from '../../utils/validators';
 
 function LoginFormWrapper({validate, initialValues, requestParams, setResponse}){
     const [values, setValues] = useState(initialValues);

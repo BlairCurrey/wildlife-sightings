@@ -1,7 +1,10 @@
 import { React, useState } from "react";
 
 import SightingForm from './SightingForm.js';
-import { getFormValidationState, formStateIsValid } from '../common/validators';
+import { 
+    getFormValidationState, 
+    formStateIsValid 
+} from '../../utils/validators';
 function SightingFormWrapper({
     animals,
     fetchSightings,
