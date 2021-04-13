@@ -73,7 +73,7 @@ function Home(){
   };
   const classes = useStyles();
   return (
-    <Container className={classes.container}>
+    <Container className={classes.container} component="main">
       <Typography variant="h5" component="h2">Add a Sighting</Typography>
       <div>{result}</div>
       <SightingFormWrapper 

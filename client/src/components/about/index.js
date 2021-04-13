@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 function About(props){
     const classes = useStyles()
     return (
-    <Container className={classes.container}>
+    <Container className={classes.container} component="main">
         <Typography 
             className={classes.title}
             variant="h2"

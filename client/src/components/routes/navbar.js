@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Navbar(){
     const classes = useStyles();
-    const preventDefault = (event) => event.preventDefault();
     return(
         <div className={classes.root}>
             <AppBar position="static">

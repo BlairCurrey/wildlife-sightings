@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
 function NotFound(){
     const classes = useStyles()
     return(
-        <Container className={classes.container}>
+        <Container className={classes.container} component="main">
             <Typography 
                 variant="h1" 
                 align="center"

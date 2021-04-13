@@ -53,6 +53,7 @@ function Signup(){
             container
             direction="column"
             alignItems="center"
+            component="main"
         >
             <Grid item className={classes.grid}>
                 <Paper className={classes.paper}>
