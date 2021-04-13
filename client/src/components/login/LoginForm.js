@@ -1,4 +1,5 @@
 import React from 'react';
+import Button from '@material-ui/core/Button'
 
 function LoginForm({
     values, 
@@ -36,7 +37,7 @@ function LoginForm({
             />
             <div className="invalidInput">{touched.password && errors.password}</div>
         </label>
-        <input type="submit" value="Submit" />
+        <Button type="submit" variant="contained" color="primary">Login</Button>
         </form>
     )
 }

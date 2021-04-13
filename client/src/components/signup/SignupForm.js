@@ -1,3 +1,15 @@
+import { Button, TextField } from '@material-ui/core'; 
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        '& .MuiFormControl-root, Button': {
+            marginTop: theme.spacing(1),
+            marginBottom: theme.spacing(1)
+        },
+    }
+}));
+
 function SignupForm({
     values,
     errors,
@@ -6,48 +18,68 @@ function SignupForm({
     handleBlur,
     handleSubmit
 }){
+    const classes = useStyles();
     return(
-        <form onSubmit={handleSubmit}>
-        <label>
-            Username
-            <input
-                type="text"
-                name="username"
-                placeholder="username"
-                value={values.username}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                required
-            />
-            <div className="invalidInput">{touched.username && errors.username}</div>
-        </label>
-        <label>
-            Email
-            <input
-                type="email"
-                name="email"
-                placeholder="email@domain.com"
-                value={values.email}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                required
-            />
-            <div className="invalidInput">{touched.email && errors.email}</div>
-        </label>
-        <label>
-            Password
-            <input
-                type="password"
-                name="password"
-                placeholder="password"
-                value={values.password}
-                onChange={handleChange}
-                onBlur={handleBlur}
-                required
-            />
-            <div className="invalidInput">{touched.password && errors.password}</div>
-        </label>
-        <input type="submit" value="Submit" />
+        <form className={classes.root} onSubmit={handleSubmit}>
+                    <TextField
+                        type="text"
+                        id="username"
+                        name="username"
+                        placeholder="username"
+                        label="Username"
+                        value={values.username}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        touched={touched.email}
+                        error={errors.username}
+                        helperText={errors.username}
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="email"
+                        label="Email"
+                        value={values.email}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        touched={touched.email}
+                        error={errors.email}
+                        helperText={errors.email}
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        required
+                    />
+                    <TextField
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="password"
+                        label="Password"
+                        value={values.password}
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        touched={touched.password}
+                        error={errors.password}
+                        helperText={errors.password}
+                        variant="outlined"
+                        size="small"
+                        fullWidth
+                        required
+                        />
+                    <Button 
+                        type="submit"
+                        variant="contained"
+                        color="primary"
+                        fullWidth
+                    >
+                        Signup
+                    </Button>
         </form>
     )
 }
