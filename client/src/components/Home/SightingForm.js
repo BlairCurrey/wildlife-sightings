@@ -1,3 +1,5 @@
+import Button from '@material-ui/core/Button';
+
 function SightingForm({
     animals,
     values,
@@ -79,7 +81,7 @@ function SightingForm({
             />
             <div className="invalidInput">{touched.comment && errors.comment}</div>
         </label>
-        <input type="submit" value="Submit" />
+        <Button type="submit" variant="contained" color="primary">Submit</Button>
         </form>
     );
 };
