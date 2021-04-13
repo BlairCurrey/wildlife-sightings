@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react';
-import { Container } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 import SightingFormWrapper from './SightingFormWrapper.js'
 import Sightings from './Sightings.js';
@@ -11,6 +12,10 @@ import {
   dateValidator,
   commentValidator
 } from '../../utils/validators';
+
+const useStyles = makeStyles((theme) => ({
+    container: { marginTop: theme.spacing(5) },
+}));
 
 function Home(){
   const [result, setResult] = useState();
@@ -66,10 +71,10 @@ function Home(){
     let data = await requestResult.json();
     setResult(data.message)
   };
+  const classes = useStyles();
   return (
-    <Container>
-      <h1>Homepage</h1>
-      <h2>Add a Sighting</h2>
+    <Container className={classes.container}>
+      <Typography variant="h5" component="h2">Add a Sighting</Typography>
       <div>{result}</div>
       <SightingFormWrapper 
         animals={animals}

@@ -12,7 +12,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     paper: { padding: "2rem" },
-    grid: { maxWidth: "350px" },
+    grid: { marginTop: theme.spacing(5), maxWidth: "350px" },
     title: { marginBottom: theme.spacing(5) },
 }));
 

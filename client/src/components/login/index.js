@@ -10,7 +10,7 @@ import {  emailValidator,
 
 const useStyles = makeStyles((theme) => ({
     paper: { padding: "2rem" },
-    grid: { maxWidth: "350px" },
+    grid: { marginTop: theme.spacing(5), maxWidth: "350px" },
     title: { marginBottom: theme.spacing(5) },
 }));
 
@@ -47,17 +47,6 @@ function Login (){
     const classes = useStyles();
 
     return(
-        // <div>
-        //     <h1>Login</h1>
-        //     <div>{result}</div>
-        //     <LoginFormWrapper
-        //         validate={validate}
-        //         initialValues={initialValues}
-        //         requestParams={requestParams}
-        //         setResponse={setResponse}
-        //     />
-        //     <p>Not signed up yet?<Link to="/signup">Sign up</Link></p>
-        // </div>
         <Grid
             container
             direction="column"
