@@ -14,7 +14,7 @@ function Routes(){
     <BrowserRouter>
       <Navbar />
       <Switch>
-        <Route path="/" exact render={(props) => <Home {...props} />}/>
+        <Route path="/" exact render={(props) => <Home {...props} />} />
         <Route path="/home" exact render={(props) => <Home {...props} />}/>
         <Route path="/about" exact render={(props) => <About {...props} />}/>
         <Route path="/signup" exact render={(props) => <Signup {...props} />}/>

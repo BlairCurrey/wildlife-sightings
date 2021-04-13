@@ -1,11 +1,17 @@
 import React from 'react';
+import { Container, Typography } from '@material-ui/core';
 
-function NotFOund(){
+function NotFound(){
     return(
-        <div>
-            <h1>Page Not Found</h1>
-        </div>
+        <Container>
+            <Typography 
+                variant="h1" 
+                align="center"
+            >
+                Page Not Found
+            </Typography>
+        </Container>
     )
 }
 
-export default NotFOund;
+export default NotFound;

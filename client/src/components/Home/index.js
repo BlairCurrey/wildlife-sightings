@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react';
+import { Container } from '@material-ui/core';
 
 import SightingFormWrapper from './SightingFormWrapper.js'
 import Sightings from './Sightings.js';
@@ -66,7 +67,7 @@ function Home(){
     setResult(data.message)
   };
   return (
-    <div className="Home">
+    <Container>
       <h1>Homepage</h1>
       <h2>Add a Sighting</h2>
       <div>{result}</div>
@@ -80,7 +81,7 @@ function Home(){
       />
       <Map sightings={sightings}/>
       <Sightings sightings={sightings}/>
-    </div>
+    </Container>
   );
 }
 
