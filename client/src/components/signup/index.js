@@ -12,7 +12,7 @@ import {
 
 const useStyles = makeStyles((theme) => ({
     paper: { padding: "2rem" },
-    grid: { maxWidth: "350px" },
+    grid: { marginTop: theme.spacing(5), maxWidth: "350px" },
     title: { marginBottom: theme.spacing(5) },
 }));
 
@@ -64,23 +64,21 @@ function Signup(){
                     >
                         Signup
                     </Typography>
+                    <div>{result}</div>
                     <SignupFormWrapper 
                         validate={validate}
                         initialValues={initialValues}
                         requestParams={requestParams}
                         setResponse={setResponse}
                     />
-                    <Typography 
-                        variant="p" 
-                        align="center"
-                    >
+                    <Typography variant="body2" align="left">
                         <Link to="/login">
                             Already signed up? Login
                         </Link>
                     </Typography>
                 </Paper>
             </Grid>   
-        </Grid> 
+        </Grid>
     )
 }
 

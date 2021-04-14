@@ -5,7 +5,7 @@ function Map({sightings}){
         <MapContainer 
             center={[0, 0]} 
             zoom={1} 
-            scrollWheelZoom={true} 
+            scrollWheelZoom={true}
             style={{height: "360px"}}
         >
             <TileLayer

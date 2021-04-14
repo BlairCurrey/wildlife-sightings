@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from 'react';
+import { Typography, Box } from '@material-ui/core';
 
 import SightingFormWrapper from './SightingFormWrapper.js'
 import Sightings from './Sightings.js';
@@ -66,9 +67,8 @@ function Home(){
     setResult(data.message)
   };
   return (
-    <div className="Home">
-      <h1>Homepage</h1>
-      <h2>Add a Sighting</h2>
+    <Box my={5}>
+      <Typography variant="h5" component="h2">Add a Sighting</Typography>
       <div>{result}</div>
       <SightingFormWrapper 
         animals={animals}
@@ -80,7 +80,7 @@ function Home(){
       />
       <Map sightings={sightings}/>
       <Sightings sightings={sightings}/>
-    </div>
+    </Box>
   );
 }
 

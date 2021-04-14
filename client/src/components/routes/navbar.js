@@ -1,14 +1,36 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { AppBar, Toolbar, Button, Typography, Link} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
 
 function Navbar(){
+    const classes = useStyles();
     return(
-        <ul>
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/signup">Signup</Link></li>
-            <li><Link to="/login">Login</Link></li>
-        </ul>
+        <div className={classes.root}>
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="h6" className={classes.title}>
+                      <Link href="/home" color="inherit" underline="none">
+                        Wildlife Sightings
+                      </Link>
+                    </Typography>
+                    <Button color="inherit" href="/home">Home</Button>
+                    <Button color="inherit" href="/about">About</Button>
+                    <Button color="inherit" href="/login">Login</Button>
+                </Toolbar>
+            </AppBar>
+        </div>
     )
 }
 

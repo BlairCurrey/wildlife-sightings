@@ -9,15 +9,15 @@ const usernameValidator = username => {
 };
   
 const emailValidator = email => {
+  if (email.trim() === '') {
+    return 'Email is required';
+  }
   if (
     /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
       email,
     )
   ) {
     return null;
-  }
-  if (email.trim() === '') {
-    return 'Email is required';
   }
   return 'Please enter a valid email';
 };
