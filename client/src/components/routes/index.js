@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import { Container } from '@material-ui/core';
 
 import Navbar from './navbar'
@@ -12,7 +12,7 @@ import NotFound from '../notfound';
 
 function Routes(){
   return(
-    <BrowserRouter>
+    <div>
       <Navbar />
       <Switch>
         <Route path="/" exact render={(props) => 
@@ -46,7 +46,7 @@ function Routes(){
           </Container>
         }/>
       </Switch>
-    </BrowserRouter>
+    </div>
   )
 };
 

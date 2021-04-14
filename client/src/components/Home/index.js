@@ -12,7 +12,7 @@ import {
   commentValidator
 } from '../../utils/validators';
 
-function Home(){
+function Home(props){
   const [result, setResult] = useState();
   const [animals, setAnimals] = useState([]);
   const [sightings, setSightings] = useState([]);
