@@ -1,6 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { Container, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Typography, Box } from '@material-ui/core';
 
 import SightingFormWrapper from './SightingFormWrapper.js'
 import Sightings from './Sightings.js';
@@ -12,10 +11,6 @@ import {
   dateValidator,
   commentValidator
 } from '../../utils/validators';
-
-const useStyles = makeStyles((theme) => ({
-    container: { marginTop: theme.spacing(5) },
-}));
 
 function Home(){
   const [result, setResult] = useState();
@@ -71,9 +66,8 @@ function Home(){
     let data = await requestResult.json();
     setResult(data.message)
   };
-  const classes = useStyles();
   return (
-    <Container className={classes.container} component="main">
+    <Box my={5}>
       <Typography variant="h5" component="h2">Add a Sighting</Typography>
       <div>{result}</div>
       <SightingFormWrapper 
@@ -86,7 +80,7 @@ function Home(){
       />
       <Map sightings={sightings}/>
       <Sightings sightings={sightings}/>
-    </Container>
+    </Box>
   );
 }
 

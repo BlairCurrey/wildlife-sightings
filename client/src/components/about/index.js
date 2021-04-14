@@ -1,9 +1,9 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
+import { Typography, Box} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
-    container: { marginTop: theme.spacing(5) },
+    // container: { marginTop: theme.spacing(5) },
     title: { marginBottom: theme.spacing(3) }
 }));
 
@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 function About(props){
     const classes = useStyles()
     return (
-    <Container className={classes.container} component="main">
+    <Box my={5}>
         <Typography 
             className={classes.title}
             variant="h2"
@@ -23,7 +23,7 @@ function About(props){
             Wildlife Sightings allows you to report sigthings of select
             animals and view reports from others.
         </Typography>
-    </Container>
+    </Box>
     );
 }
 

@@ -1,22 +1,16 @@
 import React from 'react';
-import { Container, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-
-const useStyles = makeStyles((theme) => ({
-    container: { marginTop: theme.spacing(5) },
-}));
+import { Box, Typography } from '@material-ui/core';
 
 function NotFound(){
-    const classes = useStyles()
     return(
-        <Container className={classes.container} component="main">
+        <Box my={5}>
             <Typography 
                 variant="h1" 
                 align="center"
             >
                 Page Not Found
             </Typography>
-        </Container>
+        </Box>
     )
 }
 
