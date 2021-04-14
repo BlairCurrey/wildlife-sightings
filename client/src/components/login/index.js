@@ -69,10 +69,7 @@ function Login (){
                         requestParams={requestParams}
                         setResponse={setResponse}
                     />
-                    <Typography 
-                        variant="p" 
-                        align="center"
-                    >
+                    <Typography variant="body2" align="left">
                         <Link to="/signup">
                             Not signed up yet? Sign up
                         </Link>

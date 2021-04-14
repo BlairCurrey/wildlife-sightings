@@ -19,7 +19,7 @@ function About(props){
         >
             About
         </Typography>
-        <Typography paragraph="true">
+        <Typography paragraph={true}>
             Wildlife Sightings allows you to report sigthings of select
             animals and view reports from others.
         </Typography>
