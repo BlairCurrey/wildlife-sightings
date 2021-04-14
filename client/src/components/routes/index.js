@@ -16,32 +16,32 @@ function Routes(){
       <Navbar />
       <Switch>
         <Route path="/" exact render={(props) => 
-          <Container inputProperties={props} component="main">
+          <Container component="main">
             <Home {...props} />
           </Container>
         }/>
         <Route path="/home" exact render={(props) => 
-          <Container inputProperties={props} component="main">
+          <Container component="main">
             <Home {...props} />
           </Container>
         }/>
         <Route path="/about" exact render={(props) => 
-          <Container inputProperties={props} component="main">
+          <Container component="main">
             <About {...props} />
           </Container>
         }/>
         <Route path="/signup" exact render={(props) => 
-          <Container inputProperties={props} component="main">
+          <Container component="main">
             <Signup {...props} />
           </Container>
         }/>
         <Route path="/login" exact render={(props) => 
-          <Container inputProperties={props} component="main">
+          <Container component="main">
             <Login {...props} />
           </Container>
         }/>
         <Route path="/*" exact render={(props) => 
-          <Container inputProperties={props} component="main">
+          <Container component="main">
             <NotFound {...props} />
           </Container>
         }/>
