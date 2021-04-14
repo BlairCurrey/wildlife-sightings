@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, Button, Typography, Link} from '@material-ui/core';
+import { AppBar, Toolbar, Button, Typography, Link, Container } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -19,16 +19,18 @@ function Navbar(){
   return(
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            <Link href="/home" color="inherit" underline="none">
-              Wildlife Sightings
-            </Link>
-          </Typography>
-          <Button color="inherit" href="/home">Home</Button>
-          <Button color="inherit" href="/about">About</Button>
-          <Button color="inherit" href="/login">Login</Button>
-        </Toolbar>
+        <Container>
+          <Toolbar disableGutters>
+            <Typography variant="h6" className={classes.title}>
+              <Link href="/home" color="inherit" underline="none">
+                Wildlife Sightings
+              </Link>
+            </Typography>
+            <Button color="inherit" href="/home">Home</Button>
+            <Button color="inherit" href="/about">About</Button>
+            <Button color="inherit" href="/login">Login</Button>
+          </Toolbar>
+        </Container>
       </AppBar>
     </div>
   )
