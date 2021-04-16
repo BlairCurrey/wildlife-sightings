@@ -41,7 +41,7 @@ function SightingForm({
           required
         >
             {animals.map(a => (
-                <MenuItem key={a.type} value={a._id} ref={nodeRef}>
+                <MenuItem key={a.type} value={a._id}>
                     {a.type}
                 </MenuItem>
             ))}
