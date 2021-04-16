@@ -54,7 +54,7 @@ function Login (){
         >
             <Grid item className={classes.grid}>
                 <Paper className={classes.paper}>
-                    <Typography 
+                    <Typography
                         className={classes.title}
                         variant="h2" 
                         component="h1"

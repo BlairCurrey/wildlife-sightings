@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 
 import SightingForm from './SightingForm.js';
 import { 
@@ -78,7 +78,7 @@ function SightingFormWrapper({
                 animals={animals}
                 values={values}
                 errors={errors}
-                touched={touched}
+                touched={touched} // not used
                 handleChange={handleChange}
                 handleBlur={handleBlur}
                 handleSubmit={handleSubmit}

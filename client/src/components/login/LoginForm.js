@@ -22,7 +22,7 @@ function LoginForm({
     return(
         <form className={classes.root} onSubmit={handleSubmit}>
             <TextField
-                type="email"
+                type="text"
                 id="email"
                 name="email"
                 placeholder="email@domain.com"
@@ -30,8 +30,7 @@ function LoginForm({
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                touched={touched.email}
-                error={errors.email}
+                error={Boolean(errors.email)}
                 helperText={errors.email}
                 variant="outlined"
                 size="small"
@@ -47,8 +46,7 @@ function LoginForm({
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                touched={touched.password}
-                error={errors.password}
+                error={Boolean(errors.password)}
                 helperText={errors.password}
                 variant="outlined"
                 size="small"

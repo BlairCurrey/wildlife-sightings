@@ -31,7 +31,7 @@ exports.getById = async (req, res) => {
     }
 };
 
-const creatSanitizer = (req) => {
+const createSanitizer = (req) => {
     Object.keys(req.body).forEach(key =>{
         req.body[key] = validator.escape(req.body[key]);
     })

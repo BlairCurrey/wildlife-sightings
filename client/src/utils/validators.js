@@ -13,13 +13,13 @@ const emailValidator = email => {
     return 'Email is required';
   }
   if (
-    /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
+    !(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/.test(
       email,
-    )
+    ))
   ) {
-    return null;
+    return 'Please enter a valid email';
   }
-  return 'Please enter a valid email';
+  return null;
 };
   
 const passwordValidator = password => {
@@ -41,7 +41,7 @@ const animalIdValidator = animalId => {
 };
 
 const latitudeValidator = latitude => {
-  if (!latitude) {
+  if (latitude.trim() === '') {
     return 'Latitude is required';
   }
 
@@ -59,7 +59,7 @@ const latitudeValidator = latitude => {
 };
 
 const longitudeValidator = longitude => {
-  if (!longitude) {
+  if (longitude.trim() === '') {
     return 'Latitude is required';
   }
 

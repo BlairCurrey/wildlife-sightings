@@ -67,7 +67,7 @@ function LoginFormWrapper({validate, initialValues, requestParams, setResponse})
         <LoginForm
             values={values}
             errors={errors}
-            touched={touched}
+            touched={touched} //not used in LoginForm
             handleChange={handleChange}
             handleBlur={handleBlur}
             handleSubmit={handleSubmit}

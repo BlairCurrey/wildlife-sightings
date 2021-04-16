@@ -73,7 +73,7 @@ function SignupFormWrapper({
         <SignupForm
             values={values}
             errors={errors}
-            touched={touched}
+            touched={touched} // not used in SignupForm
             handleChange={handleChange}
             handleBlur={handleBlur}
             handleSubmit={handleSubmit}

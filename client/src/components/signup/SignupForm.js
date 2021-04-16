@@ -30,8 +30,7 @@ function SignupForm({
                 value={values.username}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                touched={touched.username}
-                error={errors.username}
+                error={Boolean(errors.username)}
                 helperText={errors.username}
                 variant="outlined"
                 size="small"
@@ -39,7 +38,7 @@ function SignupForm({
                 required
             />
             <TextField
-                type="email"
+                type="text"
                 id="email"
                 name="email"
                 placeholder="email@domain.com"
@@ -47,8 +46,7 @@ function SignupForm({
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                touched={touched.email}
-                error={errors.email}
+                error={Boolean(errors.email)}
                 helperText={errors.email}
                 variant="outlined"
                 size="small"
@@ -64,8 +62,7 @@ function SignupForm({
                 value={values.password}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                touched={touched.password}
-                error={errors.password}
+                error={Boolean(errors.password)}
                 helperText={errors.password}
                 variant="outlined"
                 size="small"
