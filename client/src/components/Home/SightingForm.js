@@ -137,7 +137,13 @@ function SightingForm({
                 </Grid>
             </Grid>
             <Grid item xs={12} className={classes.button}>
-                <Button type="submit" variant="contained">Submit</Button>
+                <Button 
+                    type="submit" 
+                    variant="contained"
+                    color="secondary"
+                >
+                    Submit
+                </Button>
             </Grid>
         </form>
     );
