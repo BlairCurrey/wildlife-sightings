@@ -56,7 +56,7 @@ function LoginForm({
             <Button 
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="secondary"
                 fullWidth
             >
                 Log in

@@ -72,7 +72,7 @@ function SignupForm({
             <Button 
                 type="submit"
                 variant="contained"
-                color="primary"
+                color="secondary"
                 fullWidth
             >
                 Signup
