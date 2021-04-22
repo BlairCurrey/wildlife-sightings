@@ -1,6 +1,18 @@
 import React from 'react';
-import { AppBar, Toolbar, Button, Typography, Link, Container } from '@material-ui/core';
+import { 
+  AppBar, 
+  Toolbar, 
+  Button, 
+  Typography, 
+  Link, 
+  Container ,
+  IconButton,
+  Menu,
+  MenuItem,
+  Hidden
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -12,9 +24,29 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  navIconHide: {
+    [theme.breakpoints.up('sm')]: {
+      display: 'none',
+    },
+  },
+  buttonsHide: {
+    [theme.breakpoints.down('sm')]: {
+      display: 'none',
+    },
+  },
 }));
 
 function Navbar(){
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   const classes = useStyles();
   return(
     <div className={classes.root}>
@@ -26,9 +58,33 @@ function Navbar(){
                 Wildlife Sightings
               </Link>
             </Typography>
-            <Button color="inherit" href="/home">Home</Button>
-            <Button color="inherit" href="/about">About</Button>
-            <Button color="inherit" href="/login">Login</Button>
+            <Hidden mdUp>
+              <IconButton 
+                // className={classes.navIconHide}
+                onClick={handleClick}
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                aria-controls="nav-menu"
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="nav-menu"
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}><Button color="inherit" href="/home">Home</Button></MenuItem>
+                <MenuItem onClick={handleClose}><Button color="inherit" href="/about">About</Button></MenuItem>
+                <MenuItem onClick={handleClose}><Button color="inherit" href="/login">Login</Button></MenuItem>
+              </Menu>
+            </Hidden>
+            <Hidden smDown>
+              <Button color="inherit" href="/home">Home</Button>
+              <Button color="inherit" href="/about">About</Button>
+              <Button color="inherit" href="/login">Login</Button>
+            </Hidden>
           </Toolbar>
         </Container>
       </AppBar>
