@@ -1,17 +1,33 @@
 import React, { useState } from "react";
+import {
+    Typography,
+    Accordion,
+    AccordionSummary,
+    AccordionDetails
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-import SightingForm from './SightingForm.js';
 import { 
     getFormValidationState, 
-    formStateIsValid 
+    formStateIsValid
 } from '../../utils/validators';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import AddLocationIcon from '@material-ui/icons/AddLocation';
+
+import SightingForm from './SightingForm.js';
+
+const useStyles = makeStyles((theme) => ({
+    accordionDetails: { display: "block"}
+}));
+
 function SightingFormWrapper({
     animals,
     fetchSightings,
     validate,
     initialValues, 
     requestParams, 
-    setResponse
+    setResponse,
+    result
 }){
     const [values, setValues] = useState(initialValues);
     const [errors, setErrors] = useState({});
@@ -72,18 +88,29 @@ function SightingFormWrapper({
         }
     };
 
+    const classes = useStyles();
     return(
-        <div>
-            <SightingForm
-                animals={animals}
-                values={values}
-                errors={errors}
-                touched={touched} // not used
-                handleChange={handleChange}
-                handleBlur={handleBlur}
-                handleSubmit={handleSubmit}
-            />
-        </div>
+        <Accordion>
+            <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                aria-controls="add-sighting-content"
+                id="add-sighting-header"
+            >
+                <AddLocationIcon color="secondary"/><Typography>Add a Sighting</Typography>
+            </AccordionSummary>
+            <AccordionDetails className={classes.accordionDetails}>
+                <SightingForm
+                    animals={animals}
+                    values={values}
+                    errors={errors}
+                    touched={touched} // not used
+                    handleChange={handleChange}
+                    handleBlur={handleBlur}
+                    handleSubmit={handleSubmit}
+                    result={result}
+                />
+            </AccordionDetails>
+        </Accordion>
     );
 };
 export default SightingFormWrapper;

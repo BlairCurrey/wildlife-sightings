@@ -48,12 +48,12 @@ const createValidator = async (req) => {
     }
     // latitude
     if(latitude.length == 0) errors.push("No latitude given.")
-    if(!(validator.isInt(latitude, {min: -90, max: 90}))){
+    if(!(validator.isFloat(latitude, {min: -90, max: 90}))){
         errors.push("Invalid latitude");
     }
     //longitude
     if(longitude.length == 0) errors.push("No longitude given.")
-    if(!(validator.isInt(longitude, {min: -180, max: 180}))){
+    if(!(validator.isFloat(longitude, {min: -180, max: 180}))){
         errors.push("Invalid longitude");
     }
     //date

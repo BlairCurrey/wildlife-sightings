@@ -79,7 +79,7 @@ const longitudeValidator = longitude => {
 
 const dateValidator = date => {
   if (!date) {
-    return 'Animal is required';
+    return 'Date is required';
   }
 
   let todaysDate = new Date().toISOString().split("T")[0];

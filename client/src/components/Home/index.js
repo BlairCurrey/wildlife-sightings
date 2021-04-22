@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from 'react';
-import { Typography, Box } from '@material-ui/core';
+import { Box, Paper } from '@material-ui/core';
 
 import SightingFormWrapper from './SightingFormWrapper.js'
 import Sightings from './Sightings.js';
@@ -68,16 +68,19 @@ function Home(props){
   };
   return (
     <Box my={5}>
-      <Typography variant="h5" component="h2">Add a Sighting</Typography>
-      <div>{result}</div>
-      <SightingFormWrapper 
-        animals={animals}
-        fetchSightings={fetchSightings}
-        validate={validate}
-        initialValues={initialValues}
-        requestParams={requestParams}
-        setResponse={setResponse}
-      />
+      <Box my={1}>
+        <Paper >
+          <SightingFormWrapper 
+            animals={animals}
+            fetchSightings={fetchSightings}
+            validate={validate}
+            initialValues={initialValues}
+            requestParams={requestParams}
+            setResponse={setResponse}
+            result={result}
+          />
+        </Paper>
+      </Box>
       <Map sightings={sightings}/>
       <Sightings sightings={sightings}/>
     </Box>
